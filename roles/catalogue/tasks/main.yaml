@@ -1,0 +1,55 @@
+- name: app setup 
+  ansible.builtin.import_role: 
+   name: common
+   tasks_from: app-setup.yaml
+  tags: 
+  - deployment
+
+# - name: nodejs 
+#   ansible.builtin.import_role: 
+#    name: common 
+#    tasks_from: nodejs.yaml 
+
+- name: nodejs 
+  ansible.builtin.include_role: 
+   name: common 
+   tasks_from: nodejs.yaml 
+  tags: 
+  - deployment
+  
+- name: Copying mongo repo 
+  ansible.builtin.copy: 
+     src: mongo.repo 
+     dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install mongodb client 
+  ansible.builtin.dnf: 
+     name: mongodb-mongosh
+     state: present 
+
+- name: connnect to mongodb catalogue
+  ansible.builtin.command: mongosh mongodb.sivadevops.space --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+  register: catalogue_output
+
+  # - name: evaluate catalogue database
+  #   community.mongodb.mongodb_shell:
+  #    login_host: mongodb.sivadevops.space 
+  #    eval: db.getMongo().getDBNames().indexOf('catalogue')
+  #   register: catalogue_output
+
+  # - name: print catalogue output
+  #   ansible.builtin.debug:
+  #    msg: "{{ catalogue_output }}"
+
+  
+- name: load products into mongodb
+  ansible.builtin.shell: mongosh --host {{ MONGODB_HOST }} </app/db/master-data.js
+  when: catalogue_output.stdout | int < 0
+
+- name: sysyem setup 
+  ansible.builtin.import_role:
+   name: common 
+   tasks_from: system-setup.yaml 
+
+
+  

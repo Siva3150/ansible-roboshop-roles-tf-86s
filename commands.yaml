@@ -1,0 +1,47 @@
+# This file contains Ansible commands to provision EC2 instances and deploy all Roboshop components
+
+---
+ansible_commands:
+
+  - name: Create EC2 Instances and Configure Route53
+    command: >
+     ansible-playbook -i inventory.ini -e "instances=['catalogue']" 01-ec2-r53.yaml
+
+
+  - name: Create EC2 Instances and Configure Route53
+    command: >
+      ansible-playbook -i inventory.ini
+      -e "instances=['mongodb','redis','mysql','rabbitmq','frontend','catalogue','cart','payment','shipping']"
+      01-ec2-r53.yaml
+
+  - name: Install MongoDB
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=mongodb"
+
+  - name: Install Redis
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=redis"
+
+   
+
+  - name: Install MySQL
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=mysql"
+
+  - name: Install RabbitMQ
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=rabbitmq"
+
+  - name: Install Catalogue Service
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=catalogue"
+
+  - name: Install User Service
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=user"
+
+  - name: Install Cart Service
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=cart"
+
+  - name: Install Shipping Service
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=shipping"
+
+  - name: Install Payment Service
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=payment"
+
+  - name: Install Frontend
+    command: ansible-playbook -i inventory.ini main.yaml -e "component=frontend"

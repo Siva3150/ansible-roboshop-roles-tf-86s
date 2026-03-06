@@ -1,0 +1,6 @@
+CART_HOST: cart.sivadevops.space 
+MYSQL_HOST: mysql.sivadevops.space 
+MYSQL_ROOT_USER: root
+MYSQL_ROOT_PASSWORD: RoboShop@1
+version: 1.0
+ 

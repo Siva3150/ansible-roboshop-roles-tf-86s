@@ -1,0 +1,5 @@
+RABBITMQ_HOST: rabbitmq.sivadevops.space
+USER_HOST: user.sivadevops.space 
+CART_HOST: cart.sivadevops.space 
+RABBITMQ_USER: roboshop
+RABBITMQ_PASS: roboshop123

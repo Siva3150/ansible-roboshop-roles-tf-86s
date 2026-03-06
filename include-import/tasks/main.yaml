@@ -1,0 +1,5 @@
+- name: include and import the rule
+  #ansible.builtin.include_role:
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: include-import.yaml
