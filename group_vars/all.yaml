@@ -1,10 +1,10 @@
-MONGODB_HOST: mongodb.sivadevops.space
-REDIS_HOST: redis.sivadevops.space
-CATALOGUE_HOST: catalogue.sivadevops.space
-CART_HOST: cart.sivadevops.space
-USER_HOST: user.sivadevops.space
-RABBITMQ_HOST: rabbitmq.sivadevops.space
-MYSQL_HOST: mysql.sivadevops.space
-SHIPPING_HOST: shipping.sivadevops.space
-PAYMENT_HOST: payment.sivadevops.space
+MONGODB_HOST: mongodb-{{ env }}.sivadevops.space # mongodb-dev.sivadevops.space
+REDIS_HOST: redis-{{ env }}.sivadevops.space
+CATALOGUE_HOST: catalogue-{{ env }}.sivadevops.space
+CART_HOST: cart-{{ env }}.sivadevops.space
+USER_HOST: user-{{ env }}.sivadevops.space
+RABBITMQ_HOST: rabbitmq-{{ env }}.sivadevops.space
+MYSQL_HOST: mysql-{{ env }}.sivadevops.space
+SHIPPING_HOST: shipping-{{ env }}.sivadevops.space
+PAYMENT_HOST: payment-{{ env }}.sivadevops.space
 

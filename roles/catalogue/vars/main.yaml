@@ -1,1 +1,1 @@
-MONOGODB_HOST: mongodb.sivadevops.space 
+MONOGODB_HOST: mongodb-{{ env }}.sivadevops.space 
