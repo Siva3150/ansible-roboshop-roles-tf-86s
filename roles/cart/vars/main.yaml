@@ -1,2 +1,2 @@
-REDIS_HOST: redis.sivadevops.space 
-CATALOGUE_HOST: catalogue.sivadevops.space 
+# REDIS_HOST: redis-{{ env }}.sivadevops.space 
+# CATALOGUE_HOST: catalogue-{{ env }}.sivadevops.space 

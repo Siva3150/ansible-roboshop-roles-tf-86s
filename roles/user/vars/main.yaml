@@ -1,2 +1,2 @@
-MONGODB_HOST: mongodb.sivadevops.space 
-REDIS_HOST: redis.sivadevops.space 
+# MONGODB_HOST: mongodb-{{ env }}.sivadevops.space 
+# REDIS_HOST: redis-{{ env }}.sivadevops.space 
